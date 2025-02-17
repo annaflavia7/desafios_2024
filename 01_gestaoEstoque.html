@@ -13,6 +13,63 @@
     4. Criar uma função calcularValorTotalEstoque() que retorna o valor total dos produtos no estoque.
     5. Criar um menu (switch case) para o usuário escolher ações repetidamente (entre as funções desenvolvidas) até decidir sair (opção para sair - 0).
     */
-
-
+    let produtos;
+    do {
+        produtos = prompt(`Qual operação você deseja realizar? Escolha uma opção:\n (B)Buscar um Produto\n (E) Adicionar ao estoque\n (V) Vender um Produto\n (C) Calcular o valor total do estoque`).toUpperCase();
+        switch (produtos) {
+            case "B":
+                let buscarProduto = prompt(`Digite o nome do produto que deseja procurar`);
+                let result = buscarProduto(buscarProduto);
+                alert(result);
+                break;
+            case "E":
+                let produtoId = Number(prompt(`Digite o ID do produto que você pretende adicionar ao estoque?`));
+                let quantidadeAdd = Number(prompt(`Quantos produtos você pretende adicionar`));
+                let resultAdd = adicionarEstoque(produtoId, quantidadeAdd);
+                alert(resultAdd);
+                break;
+            case "V":
+                let venderId = Number(prompt(`Digite o ID do produto que você pretende vender`));
+                let qtdVender = Number(prompt(`Quantos produtos você pretende vender?`));
+                let resultVender = venderProduto(venderId, qtdVender);
+                alert(resultVender);
+                break;
+            case "C":
+                let totalPreco = estoque.reduce((soma, produto) => soma + (produto.preco * produto.quantidade), 0);
+                alert(`Valor total do estoque: ${totalPreco}`);
+                break;
+            default:
+                alert("Opção inválida! Escolha uma opção válida (B, E, V, C ou 0 para sair).");
+        }
+    } while (coisas !== "0");
+    function buscarProduto(name) {
+        for (let i = 0; i < estoque.length; i++) {
+            if (estoque[i].nome === name) {
+                return `Produto encontrado: ${estoque[i].nome}`;
+            }
+        }
+        return "Produto não encontrado";
+    }
+    function adicionarEstoque(p, qtd) {
+        for (let i = 0; i < estoque.length; i++) {
+            if (estoque[i].id === p) {
+                estoque[i].quantidade += qtd;
+                return `Estoque atualizado! Novo estoque de ${estoque[i].nome}: ${estoque[i].quantidade}`;
+            }
+        }
+        return "Produto não encontrado";
+    }
+    function venderProduto(v, qtd) {
+        for (let i = 0; i < estoque.length; i++) {
+            if (estoque[i].id === v) {
+                if (qtd <= estoque[i].quantidade) {
+                    estoque[i].quantidade -= qtd;
+                    return `Venda realizada! Novo estoque de ${estoque[i].nome}: ${estoque[i].quantidade}`;
+                } else {
+                    return "Estoque insuficiente";
+                }
+            }
+        }
+        return "Produto não encontrado";
+    }
 </script>

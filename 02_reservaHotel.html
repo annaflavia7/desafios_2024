@@ -1,5 +1,5 @@
 <script>
-    const quartos = [
+    let quartos = [
         { numero: 101, tipo: "Standard", disponivel: true, preco: 150 },
         { numero: 102, tipo: "Luxo", disponivel: true, preco: 300 },
         { numero: 103, tipo: "Standard", disponivel: false, preco: 150 }
@@ -12,6 +12,33 @@
     4. Criar uma função calcularFaturamento() que soma o valor de todas as reservas feitas.
     5. Criar um loop (while) para o usuário interagir com as opções até escolher sair (opção 0).
     */
+    do {
+        let desejaFazer = prompt(`O que você deseja fazer? Escolha uma opção:
+    \n Listar quartos disponíveis (L)
+    \n Reservar um quarto (R)
+    \n Cancelar reserva (C)
+    \n Calcular faturamento (F)`).toUpperCase();
+        switch (desejaFazer) {
+            case "L":
 
-    
+                break;
+            case "R":
+
+                break;
+            case "C":
+
+                break;
+            case "F":
+
+                break;
+            default:
+                alert("Opção inválida! Tente novamente.");
+        }
+    } while (desejaFazer !== "0");
+
+    function listarQuartosDisponiveis() {
+        let quartosLivres = quartos.filter(quarto => quarto.disponivel === true);
+
+    }
+
 </script>
