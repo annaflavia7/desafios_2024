@@ -8,5 +8,61 @@
     4. Criar um loop (while) para exibir um menu e permitir ao usuário escolher uma opção até decidir sair (opção 0).
     */
 
-    
+    //ENTRADA
+
+
+    //PROCESSAMENTO
+
+    function calcularMedia(temperaturas) {
+        let soma = 0;
+        for (let i = 0; i < temperaturas.length; i++) {
+            soma += temperaturas[i];
+        }
+        return soma / temperaturas.length;
+    }
+
+    function encontrarMaisQuente(temperaturas) {
+        let maisQuente = temperaturas[0];
+        for (let i = 1; i < temperaturas.length; i++) {
+            if (temperaturas[i] > maisQuente) {
+                maisQuente = temperaturas[i];
+            }
+        }
+        return maisQuente;
+    }
+
+    function encontrarMaisFria(temperaturas) {
+        let maisFria = temperaturas[0];
+        for (let i = 1; i < temperaturas.length; i++) {
+            if (temperaturas[i] < maisFria) {
+                maisFria = temperaturas[i];
+            }
+        }
+        return maisFria;
+    }
+
+    function exibirMenu() {
+        let opcao;
+        do {
+            opcao = parseInt(prompt(`Escolha uma opção: \n1: Calcular média das temperaturas. \n2: Encontrar a maior temperatura. \n3: Encontrar a menor temperatura.`))
+
+            switch (opcao) {
+                case 1:
+                    alert(`Média das temperaturas:` + calcularMedia(temperaturas).toFixed(2));
+                    break;
+                case 2:
+                    alert(`Maior temperatura registrada:` + encontrarMaisQuente(temperaturas));
+                    break;
+                case 3:
+                    alert(`Menor temperatura registrada:` + encontrarMaisFria(temperaturas));
+                    break;
+                default:
+                    alert(`Inválido!`)
+            }
+        } while (opcao !== 0);
+    }
+
+    //SAÍDA
+    exibirMenu();
+
 </script>

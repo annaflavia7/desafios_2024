@@ -1,5 +1,5 @@
 <script>
-    let listaCompras = ["Arroz", "Feijão", "Leite"];
+    
     //Problema: Lista de Compras
     /*
     1. Criar uma função adicionarItem(item) que adiciona um novo item à lista.
@@ -7,6 +7,55 @@
     3. Criar uma função listarItens() que exibe todos os itens da lista.
     4. Criar um loop(while) para permitir ao usuário interagir com as opções até escolher sair.
     */
-    
-    
+
+    //ENTRADA
+
+    //PROCESSAMENTO
+
+    function adicionarItem(item) {
+         item = prompt(`Informe o item que você deseja adicionar.`);
+        listaCompras.push(item);
+        alert(item + " foi adicionado à lista.")
+    }
+
+    function removerItem(item) {
+         item = prompt(`Informe o item que você deseja remover`);
+        const index = listaCompras.indexOf(item);
+        if (index !== -1) {
+            listaCompras.splice(index, 1);
+            alert(item + " foi removido da lista.")
+        } else {
+            alert(`Esse item não está na lista.`);
+        }
+    }
+
+    function listarItens() {
+        if (listaCompras.length === 0) {
+            alert(`A lista de compras está vazia.`);
+        } else {
+            alert(`Itens da lista de compras: \n` + listaCompras.join("\n"));
+        }
+    }
+
+    function exibirMenu() {
+        let opcao ;
+        while (opcao !== 0){
+            opcao = parseInt(prompt("Escolha uma opção:\n1: Adicionar item à lista. \n2: Remover item da lista. \n3: Listar itens da lista"));
+            switch (opcao) {
+                case 1:
+                    adicionarItem();
+                    break;
+                case 2:
+                    removerItem();
+                    break;
+                case 3:
+                    listarItens();
+                    break;
+                default:
+                    alert(`Inválido.`)
+            }
+        }
+    }
+    let listaCompras = ["Arroz", "Feijão", "Leite"];
+    exibirMenu();
 </script>

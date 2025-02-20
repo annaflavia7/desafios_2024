@@ -4,5 +4,26 @@
     Criar uma função contagemRegressiva(numero) que exibe uma contagem regressiva a partir do número, que será informado pelo usuário.
     */
 
+    //ENTRADA
+
+    //PROCESSAMENTO
+
+    function contagemRegressiva(numero) {
+        if (numero < 0) {
+            alert(`Insira um número maior que 0.`)
+            return;
+        }
+        for (let i = numero; i >= 0; i--) {
+        alert(i);
+    }
+    }
+
     
+
+    //SAÍDA
+    let numero = prompt(`Informe um número`);
+    contagemRegressiva(numero);
+    alert(`Contagem regressiva finalizada.`)
+
+
 </script>
